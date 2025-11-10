@@ -1,4 +1,3 @@
-from database import artefatto_DAO
 from database.museo_DAO import MuseoDAO
 from database.artefatto_DAO import ArtefattoDAO
 
@@ -21,7 +20,7 @@ class Model:
         risultati_filtrati = []
         lista_DAO_artefatti = self._artefatto_dao.get_artefatto()
         for artefatto in lista_DAO_artefatti:
-            if artefatto.museo == museo and artefatto.epoca == epoca:
+            if (museo == "Nessun filtro" or artefatto["museo_nome"] == museo) and (epoca == "Nessun filtro" or artefatto["epoca"] == epoca):
                 risultati_filtrati.append(artefatto)
         return risultati_filtrati
 
