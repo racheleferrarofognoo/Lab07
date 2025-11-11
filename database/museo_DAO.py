@@ -1,5 +1,5 @@
 from model.museoDTO import Museo
-from DB_connect import ConnessioneDB
+from database.DB_connect import ConnessioneDB
 
 """
     Museo DAO
@@ -13,17 +13,13 @@ class MuseoDAO:
     # TODO
     def get_museo(self):
         try:
-            cnx = ConnessioneDB.get_connection()
+            cnx = ConnessioneDB().get_connection()
             cursor = cnx.cursor(dictionary=True)
             cursor.execute("SELECT * FROM museo")
-            rows = cursor.fetchall()
-            risultati = []
-            for row in rows:
-                risultati = [Museo(row["id"], row["nome"], row["tipologia"])]
+            result = cursor.fetchall()
             cursor.close()
             cnx.close()
-            return risultati
+            return result
         except Exception as e:
-            print("Errore in get_museo:", e)
-            return []
+            print(e)
 

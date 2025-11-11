@@ -1,4 +1,6 @@
 import flet as ft
+from flet.core.types import MainAxisAlignment
+
 from UI.alert import AlertManager
 
 '''
@@ -37,12 +39,12 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
-        self.dd_filtro_musei = ft.Dropdown(label = "Museo", width= 200)
+        self.dd_filtro_musei = ft.Dropdown(label = "Museo", width= 400)
         self.dd_filtro_epoca = ft.Dropdown(label = "Epoca", width= 200)
 
         # Sezione 3: Artefatti
         # TODO
-        self.btn_mostra_antefatti = ft.ElevatedButton(text="Mostra Antefatti", width=200,on_click=self.controller.mostra_artefatti)
+        self.btn_mostra_antefatti = ft.ElevatedButton(text="Mostra Artefatti", width=200,on_click=self.controller.mostra_artefatti)
         self.listview_artefatti = ft.ListView(expand=True, spacing=10, padding=20)
 
 
@@ -59,7 +61,7 @@ class View:
 
             # Sezione 2: Filtraggio
             # TODO
-            ft.Row([self.dd_filtro_musei, self.dd_filtro_epoca]),
+            ft.Row(controls = [self.dd_filtro_musei, self.dd_filtro_epoca], alignment= MainAxisAlignment.CENTER),
             ft.Divider(),
 
             # Sezione 3: Artefatti

@@ -20,7 +20,7 @@ class Model:
         risultati_filtrati = []
         lista_DAO_artefatti = self._artefatto_dao.get_artefatto()
         for artefatto in lista_DAO_artefatti:
-            if (museo == "Nessun filtro" or artefatto["museo_nome"] == museo) and (epoca == "Nessun filtro" or artefatto["epoca"] == epoca):
+            if (museo == "Nessun filtro" or artefatto["id"] == museo) and (epoca == "Nessun filtro" or artefatto["epoca"] == epoca):
                 risultati_filtrati.append(artefatto)
         return risultati_filtrati
 
@@ -31,7 +31,7 @@ class Model:
         risultati = []
         lista_artefatti = self._artefatto_dao.get_artefatto()
         for artefatto in lista_artefatti:
-            risultati.append(artefatto.epoca)
+            risultati.append(artefatto["epoca"])
         epoche = ["Nessun filtro"] + sorted(risultati)
         return epoche
 
@@ -42,7 +42,7 @@ class Model:
         risultati = []
         lista_musei = self._museo_dao.get_museo()
         for museo in lista_musei:
-            risultati.append(museo.nome)
+            risultati.append(museo["nome"])
         musei = ["Nessun filtro"] + sorted(risultati)
         return musei
 
