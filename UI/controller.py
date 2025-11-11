@@ -44,7 +44,7 @@ class Controller:
 
     # AZIONE: MOSTRA ARTEFATTI
     # TODO
-    def mostra_artefatti(self):
+    def mostra_artefatti(self,e):
         museo = self._view.dd_filtro_musei.value
         epoca = self._view.dd_filtro_epoca.value
         lista = self._model.get_artefatti_filtrati( museo, epoca)

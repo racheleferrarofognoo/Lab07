@@ -41,6 +41,8 @@ class View:
         # TODO
         self.dd_filtro_musei = ft.Dropdown(label = "Museo", width= 400)
         self.dd_filtro_epoca = ft.Dropdown(label = "Epoca", width= 200)
+        self.controller.popola_dropdown()
+
 
         # Sezione 3: Artefatti
         # TODO

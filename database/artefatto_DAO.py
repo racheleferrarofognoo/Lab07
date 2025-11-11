@@ -11,9 +11,11 @@ class ArtefattoDAO:
     # TODO
     def get_artefatto(self):
         try:
-            cnx = ConnessioneDB().get_connection()
+            cnx = ConnessioneDB.get_connection()
             cursor = cnx.cursor(dictionary = True)
-            cursor.execute("SELECT * FROM artefatto")
+            cursor.execute("""SELECT a.id as id, a.nome as nome, a.tipologia as tipologia, a.epoca as epoca, m.nome as nome_museo"
+                           FROM artefatto a, museo m 
+                           WHERE a.id_museo = m.id""")
             risultati = cursor.fetchall()
             cursor.close()
             cnx.close()

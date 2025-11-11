@@ -13,7 +13,7 @@ class MuseoDAO:
     # TODO
     def get_museo(self):
         try:
-            cnx = ConnessioneDB().get_connection()
+            cnx = ConnessioneDB.get_connection()
             cursor = cnx.cursor(dictionary=True)
             cursor.execute("SELECT * FROM museo")
             result = cursor.fetchall()
